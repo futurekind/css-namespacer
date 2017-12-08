@@ -1,0 +1,20 @@
+{
+    "name": "css-namespacer",
+    "version": "0.1.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Fabian Trinler <fabian.trinler@blateral.com>",
+    "license": "ISC",
+    "devDependencies": {
+        "commander": "^2.12.2",
+        "node-sass": "^4.7.2"
+    },
+    "prettier": {
+        "tabWidth": 4,
+        "trailingComma": "es5",
+        "singleQuote": true
+    }
+}
