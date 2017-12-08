@@ -3,10 +3,10 @@ const { writeFileSync, readFileSync } = require('fs');
 const program = require('commander');
 const pkg = require('./package.json');
 
-const write = (data, outFile) => {
+const write = (data, outFile, outputStyle = 'compressed') => {
     const result = sass.renderSync({
         data,
-        outputStyle: 'expanded',
+        outputStyle,
     });
 
     writeFileSync(outFile, result.css);
@@ -17,6 +17,10 @@ program
     .usage('[options] <file ...>')
     .option('-i, --in <string>', 'path/to/input.css')
     .option('-o, --out <string>', 'path/to/output.css')
+    .option(
+        '-f, --format <string>',
+        'Default: `compressed` node-sass outputStyles https://github.com/sass/node-sass#outputstyle'
+    )
     .option(
         '-ns, --namespace <string>',
         'Namespace Selector (Default: `.blat`)'
@@ -34,5 +38,5 @@ if (program.in && program.out) {
         }
     `;
 
-    write(data, program.out);
+    write(data, program.out, program.format);
 }
